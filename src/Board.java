@@ -3,9 +3,12 @@ import java.awt.event.ActionEvent;
 
 public class Board {
      private Cell[][] board;
+     private GameLogic gameLogic;
 
-     public Board() {
+
+     public Board(GameLogic gameLogic) {
          board = new Cell[10][10];
+         this.gameLogic = gameLogic;
      }
 
      public void CreateBoard(JPanel BoardPanel){
@@ -14,7 +17,7 @@ public class Board {
                 board[row][col] = new Cell(row, col);
                 board[row][col].addActionListener((ActionEvent ae) -> {
                     Cell clickedButton = (Cell) ae.getSource();
-                    GameLogic.makeMove(clickedButton);
+                    gameLogic.makeMove(clickedButton);
                 });
                 BoardPanel.add(board[row][col]);
              }
@@ -30,4 +33,5 @@ public class Board {
      public void markOccupied(int row, int col){
          board[row][col].setTaken(true);
      }
+
 }

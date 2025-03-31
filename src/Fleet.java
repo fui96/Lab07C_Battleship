@@ -2,6 +2,7 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 import java.awt.Point;
+import javax.swing.*;
 
 public class Fleet {
     //Fields
@@ -57,6 +58,17 @@ public class Fleet {
     public void UpdateBoard(){
         for(Point p : this.occupiedPoints){
             board.markOccupied(p.x, p.y);
+        }
+    }
+
+    public void hitRegister(Point p){
+        for(Ship s : ships){
+            if(s.getCoordinates().contains(p)){
+                s.registerHit();
+                if(s.isSunk()){
+                    JOptionPane.showMessageDialog(null,"This Ship is Sunk");
+                }
+            }
         }
     }
 }

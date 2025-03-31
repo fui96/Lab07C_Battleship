@@ -6,11 +6,12 @@ public class Cell extends JButton {
     private int col;
     private boolean taken;
     private boolean isHit;
+    private boolean isMiss;
 
     //Images
     private ImageIcon Hit = new ImageIcon("src/Asset 1@0.5x.png");
-    private ImageIcon Miss = new ImageIcon("src/Asset 2@0.5x.png");
-    private ImageIcon Blank = new ImageIcon("src/Asset 3@0.5x.png");
+    private ImageIcon Miss = new ImageIcon("src/Asset 3@0.5x.png");
+    private ImageIcon Blank = new ImageIcon("src/Asset 4@0.5x.png");
 
     //Constructor
     public Cell(int row, int col) {
@@ -19,6 +20,8 @@ public class Cell extends JButton {
         this.col = col;
         this.taken = false;
         this.isHit = false;
+        this.isMiss = false;
+        setIcon(Blank);
     }
 
 
@@ -81,13 +84,26 @@ public class Cell extends JButton {
         this.isHit = isHit;
     }
 
+    public boolean isHit() {
+        return isHit;
+    }
+    public void setIsMiss(boolean isMiss) {
+        this.isMiss = isMiss;
+    }
+    public boolean isMiss() {
+        return isMiss;
+    }
+
     //Methods
 
-    public void SetHitImg(){
-
+    public void setHitImg(){
+        this.setIcon(Hit);
     }
-    public void SetMissImg(){
-
+    public void setMissImg(){
+        this.setIcon(Miss);
+    }
+    public void setBlankImg(){
+        this.setIcon(Blank);
     }
 
 

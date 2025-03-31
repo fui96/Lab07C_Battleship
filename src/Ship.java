@@ -10,6 +10,7 @@ public class Ship {
     private ArrayList<Point> Points;
     private Boolean isHorizontal;
     private Random rand = new Random();
+    private int hitsRecieved;
     //Constructor
     public Ship(Board board,int size) {
         this.board = board;
@@ -17,6 +18,7 @@ public class Ship {
         this.Points = new ArrayList<>();
         this.isHorizontal = false;
         this.rand = new Random();
+        this.hitsRecieved = 0;
     }
     //Setters and Getters
 
@@ -30,7 +32,23 @@ public class Ship {
     public void addCoordinates(int x, int y) {
         Points.add(new Point(x, y));
     }
+
+    public ArrayList<Point> getCoordinates() {
+        return Points;
+    }
+
     //Methods
+
+    public void registerHit(){
+        hitsRecieved++;
+    }
+
+    public boolean isSunk(){
+        if(hitsRecieved == size){
+            return true;
+        }
+        return false;
+    }
 
     public void buildShip(Set<Point> occupiedPositions){
         boolean valid = false;
