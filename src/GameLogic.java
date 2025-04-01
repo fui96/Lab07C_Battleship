@@ -31,11 +31,14 @@ public class GameLogic {
         fleet.deployFleet();
     }
     public void resetGame(){
+        fleet.clearFleet();
         board.ResetBoard();
         setMissCounter(0);
         setStrikeCounter(0);
         setHitCounter(0);
         setTotalMissCounter(0);
+        fleet.deployFleet();
+        Frame.updateTrackerPanel();
     }
 
     public void setHitCounter(int hitCounter) {
@@ -92,11 +95,13 @@ public class GameLogic {
 
                 if (shipLocations.contains(shot)) {
                     clickButton.setHitImg();
+                    clickButton.setIsHit(true);
                     fleet.hitRegister(shot);
                     hitCounter++;
                     setMissCounter(0);
                 } else {
                     clickButton.setMissImg();
+                    clickButton.setIsMiss(true);
                     missCounter++;
                     totalMissCounter++;
                     if (missCounter == 5) {

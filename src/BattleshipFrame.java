@@ -14,7 +14,7 @@ public class BattleshipFrame extends JFrame {
     public BattleshipFrame() {
         setTitle("Battleship");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(800,700);
+        setSize(700,600);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
         Game = new GameLogic(this);
@@ -22,15 +22,14 @@ public class BattleshipFrame extends JFrame {
         createMainPanel();
         add(mainPanel, BorderLayout.CENTER);
 
+        createBoardPanel();
+        mainPanel.add(boardPanel, BorderLayout.CENTER);
+
         createTrackerPanel();
         add(trackerPanel, BorderLayout.WEST);
 
-        createBoardPanel();
-        mainPanel.add(boardPanel, BorderLayout.CENTER);
-        Game.createBoard(boardPanel);
-
-
-
+        createButtonPanel();
+        mainPanel.add(buttonPanel, BorderLayout.SOUTH);
 
         setVisible(true);
     }
@@ -65,10 +64,11 @@ public class BattleshipFrame extends JFrame {
     public void createBoardPanel() {
         boardPanel = new JPanel();
         boardPanel.setLayout(new GridLayout(10,10));
+        Game.createBoard(boardPanel);
     }
     public void createButtonPanel() {
         buttonPanel = new JPanel();
-        boardPanel.setLayout(new GridLayout(1,2));
+        buttonPanel.setLayout(new GridLayout(1,2));
 
         quitButton = new JButton("Quit");
         quitButton.addActionListener((ActionEvent ae) -> {
@@ -84,12 +84,13 @@ public class BattleshipFrame extends JFrame {
 
         resetButton = new JButton("Reset");
         resetButton.addActionListener((ActionEvent ae) -> {
-            int confirm = JOptionPane.showConfirmDialog(null,"Are you sure you want to rest?");
+            int confirm = JOptionPane.showConfirmDialog(null,"Are you sure you want to reset?");
             if (confirm == JOptionPane.YES_OPTION) {
                 Game.resetGame();
             }
         });
-
+        buttonPanel.add(quitButton);
+        buttonPanel.add(resetButton);
     }
 
     public static void main(String[] args) {

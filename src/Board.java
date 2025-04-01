@@ -27,6 +27,9 @@ public class Board {
          for(int row = 0; row < 10; row++){
              for(int col = 0; col < 10; col++){
                  board[row][col].setTaken(false);
+                 board[row][col].setBlankImg();
+                 board[row][col].setIsHit(false);
+                 board[row][col].setIsMiss(false);
              }
          }
      }

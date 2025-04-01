@@ -9,9 +9,9 @@ public class Cell extends JButton {
     private boolean isMiss;
 
     //Images
-    private ImageIcon Hit = new ImageIcon("src/Asset 1@0.5x.png");
-    private ImageIcon Miss = new ImageIcon("src/Asset 3@0.5x.png");
-    private ImageIcon Blank = new ImageIcon("src/Asset 4@0.5x.png");
+    private ImageIcon Hit = new ImageIcon("src/Asset 1@0.3x.png");
+    private ImageIcon Miss = new ImageIcon("src/Asset 3@0.3x.png");
+    private ImageIcon Blank = new ImageIcon("src/Asset 4@0.3x.png");
 
     //Constructor
     public Cell(int row, int col) {

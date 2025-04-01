@@ -61,6 +61,11 @@ public class Fleet {
         }
     }
 
+    public void clearFleet(){
+        this.occupiedPoints.clear();
+        this.ships.clear();
+    }
+
     public void hitRegister(Point p){
         for(Ship s : ships){
             if(s.getCoordinates().contains(p)){
